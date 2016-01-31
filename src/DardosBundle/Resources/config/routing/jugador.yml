@@ -1,0 +1,24 @@
+prueba_jugador_index:
+    path:     /
+    defaults: { _controller: "DardosBundle:Jugador:index" }
+    methods:  GET
+
+prueba_jugador_show:
+    path:     /{id}/show
+    defaults: { _controller: "DardosBundle:Jugador:show" }
+    methods:  GET
+
+prueba_jugador_new:
+    path:     /new
+    defaults: { _controller: "DardosBundle:Jugador:new" }
+    methods:  [GET, POST]
+
+prueba_jugador_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DardosBundle:Jugador:edit" }
+    methods:  [GET, POST]
+
+prueba_jugador_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DardosBundle:Jugador:delete" }
+    methods:  DELETE

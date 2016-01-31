@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Inicio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+    {% stylesheets '@DardosBundle/Resources/public/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    <script type="text/javascript" src="js/include_script.js"></script>
+    <!--[if lt IE 8]><div style='text-align:center'><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/img/upgrade.jpg"border="0"alt=""/></a></div><![endif]-->
+    <!--[if lt IE 9]>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css'>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--web site spinner-->
+<div id="webSiteLoader"></div>
+<!--page spinner-->
+<div id="pageLoader"><div></div></div>
+<!--background image-->
+<div id="bgStretch">
+    {% image '@DardosBundle/Resources/public/img/bg_pic1.jpg' %}
+    <img src="{{ asset_url }}" alt="" />
+    {% endimage %}</div>
+<!--content wrapper-->
+<div id="wrapper">
+    <div id="splash">
+
+
+
+    </div>
+    <!--header-->
+    <header>
+        <div class="container">
+            <div class="menu_col">
+                <!--menu-->
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="sf-menu">
+                            <li>
+                                <a href="jugadores.html">
+                                    {% image '@DardosBundle/Resources/public/img/splash_icon1.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img" />
+                                    {% endimage %}
+                                    {% image '@DardosBundle/Resources/public/img/splash_icon1_over.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img_over" />
+                                    {% endimage %}
+                                    <div class="base_text">Jugadores</div>
+                                    <div class="num_text">01</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="equipos.html">
+                                    {% image '@DardosBundle/Resources/public/img/page3_pic4.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img" />
+                                    {% endimage %}
+                                    {% image '@DardosBundle/Resources/public/img/page3_pic4_over.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img_over" />
+                                    {% endimage %}
+                                    <div class="base_text">Equipos</div><div class="num_text">02</div></a>
+                            </li>
+                            <li>
+                                <a href="partidas.html">
+                                    {% image '@DardosBundle/Resources/public/img/diana.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img" />
+                                    {% endimage %}
+                                    {% image '@DardosBundle/Resources/public/img/diana_over.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img_over" />
+                                    {% endimage %}
+                                    <div class="base_text">Partidas</div><div class="num_text">03</div></a></li>
+                            <li>
+                                <a href="jugadorNuevo.html">
+                                    {% image '@DardosBundle/Resources/public/img/add-player.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img" />
+                                    {% endimage %}
+                                    {% image '@DardosBundle/Resources/public/img/add-player_over.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img_over" />
+                                    {% endimage %}
+                                    <div class="base_text">Nuevo jugador</div><div class="num_text">04</div></a></li>
+                            <li>
+                                <a href="equipoNuevo.html">
+                                    {% image '@DardosBundle/Resources/public/img/add-team.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img" />
+                                    {% endimage %}
+                                    {% image '@DardosBundle/Resources/public/img/add-team_over.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img_over" />
+                                    {% endimage %}
+                                    <div class="base_text">Nuevo equipo</div><div class="num_text">05</div></a></li>
+                            <li>
+                                <a href="registrarPartida.html">
+                                    {% image '@DardosBundle/Resources/public/img/partida.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img" />
+                                    {% endimage %}
+                                    {% image '@DardosBundle/Resources/public/img/partida_over.png' %}
+                                    <img src="{{ asset_url }}" alt="" class="menu_img_over" />
+                                    {% endimage %}
+                                    <div class="base_text">Registrar partida</div><div class="num_text">06</div></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--content-->
+    <section>
+        <div id="content_part">
+            <div class="container">
+                <div class="dynamicContent">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% javascripts '@DardosBundle/Resources/public/js/include_script.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% javascripts '@DardosBundle/Resources/public/js/bootstrap.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+</body>
+</html>

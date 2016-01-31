@@ -1,0 +1,4 @@
+services:
+#    dardos.example:
+#        class: DardosBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

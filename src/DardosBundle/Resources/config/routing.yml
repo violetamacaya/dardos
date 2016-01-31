@@ -1,0 +1,7 @@
+dardos_prueba_jugador:
+    resource: "@DardosBundle/Resources/config/routing/jugador.yml"
+    prefix:   /prueba/jugador
+
+dardos_homepage:
+    path:     /
+    defaults: { _controller: DardosBundle:Default:index }
