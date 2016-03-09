@@ -1,0 +1,53 @@
+{% extends '@DardosBundle/Resources/views/layout.html.twig' %}
+
+{% block content %}
+    <h1>Partida</h1>
+
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Equipo</th>
+                <td>{{ partida.equipo }}</td>
+            </tr>
+            <tr>
+                <th>Contrincantes</th>
+                <td>{{ partida.contrincantes }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{% if partida.fecha %}{{ partida.fecha|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Jugada</th>
+                <td>{% if partida.jugada %}Sí{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Ganada</th>
+                <td>{% if partida.ganada %}Sí{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Aplazada</th>
+                <td>{% if partida.aplazada %}Sí{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lorien</th>
+                <td>{% if partida.local %}Sí{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ partida.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Resultado</th>
+                <td>{{ partida.resultado }}</td>
+            </tr>
+        </tbody>
+    </table>
+                {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Borrar">
+    <a class="btn btn-info" href="{{ path('partida_index') }}">Volver al listado</a>
+
+    <a class="btn btn-primary" href="{{ path('partida_edit', { 'id': partida.id }) }}">Editar</a>
+            {{ form_end(delete_form) }}
+
+{% endblock %}

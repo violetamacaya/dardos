@@ -1,7 +1,13 @@
 dardos_prueba_jugador:
     resource: "@DardosBundle/Resources/config/routing/jugador.yml"
-    prefix:   /prueba/jugador
+    prefix:   /jugador
 
+dardos_equipo:
+    resource: "@DardosBundle/Resources/config/routing/equipo.yml"
+    prefix:   /equipo
+dardos_partida:
+    resource: "@DardosBundle/Resources/config/routing/partida.yml"
+    prefix:   /partida
 dardos_homepage:
     path:     /
     defaults: { _controller: DardosBundle:Default:index }

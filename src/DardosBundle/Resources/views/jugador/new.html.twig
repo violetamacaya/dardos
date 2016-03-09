@@ -1,0 +1,17 @@
+{% extends '@DardosBundle/Resources/views/layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block content %}
+    <div class="col-lg-6 col-sm-12">
+<h1>Añadir jugador</h1>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+        <a class="btn btn-primary" href="{{ path('prueba_jugador_index') }}">Volver a la lista</a>
+
+        <input type="submit" value="Crear" class="btn btn-success"/>
+
+        {{ form_end(form) }}
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends '@DardosBundle/Resources/views/layout.html.twig' %}
+
+{% block content %}
+    <h1>Jugadores</h1>
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Dni</th>
+                <th>Apellidos</th>
+                <th>Telefono</th>
+                <th>Ppd</th>
+                <th>Mpr</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jugador in jugadors %}
+            <tr>
+                <td><a href="{{ path('prueba_jugador_show', { 'id': jugador.id }) }}">{{ jugador.nombre }}</a></td>
+                <td>{{ jugador.dni }}</td>
+                <td>{{ jugador.apellidos }}</td>
+                <td>{{ jugador.telefono }}</td>
+                <td>{{ jugador.ppd }}</td>
+                <td>{{ jugador.mpr }}</td>
+                <td>
+
+                            <a class="btn btn-primary" href="{{ path('prueba_jugador_show', { 'id': jugador.id }) }}">Mostrar</a>
+                            <a class="btn btn-info" href="{{ path('prueba_jugador_edit', { 'id': jugador.id }) }}">Editar</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+            <a class="btn-success btn" href="{{ path('prueba_jugador_new') }}">Añadir jugador</a>
+
+{% endblock %}

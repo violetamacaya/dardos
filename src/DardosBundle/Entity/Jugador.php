@@ -2,6 +2,7 @@
 
 namespace DardosBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,8 +50,7 @@ class Jugador
     private $equipo;
 
     /**
-     * @ORM\OneToOne(targetEntity="Equipo", inversedBy="capitan")
-     * @ORM\JoinColumn(name="capitanea_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Equipo", mappedBy="capitan")
      */
     private $capitanea;
 
@@ -76,15 +76,19 @@ class Jugador
     private $mpr;
 
     /**
+     * @ORM\OneToMany(targetEntity="Medias", mappedBy="jugador", cascade={"persist"})
+     */
+    private $medias;
+
+    /**
      * Jugador constructor.
      */
     public function __construct()
     {
         $this->mpr = 0;
         $this->ppd = 0;
+        $this->medias = new ArrayCollection();
     }
-
-
 
     /**
      * @return int
@@ -229,5 +233,27 @@ class Jugador
     {
         $this->mpr = $mpr;
     }
+    
+    public function __toString()
+    {
+      return $this->nombre." ".$this->apellidos;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collection\ArrayCollection $medias
+     */
+    public function setMedias($medias)
+    {
+        $this->medias = $medias;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collection\ArrayCollection
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
 
 }

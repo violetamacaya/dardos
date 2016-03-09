@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="dardos">
+  <component name="PublishConfigData" autoUpload="On explicit save action" promptOnRemoteOverwrite="CHECK_CONTENT" serverName="dardos-server" promptOnLocalOverwrite="false">
     <serverData>
-      <paths name="dardos">
+      <paths name="dardos-server">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="dardos/dardos" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath path="/app/cache" />
+            <excludedPath path="/app/logs" />
+            <excludedPath path="/vendor" />
+            <excludedPath path="/bin" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
   </component>
 </project>

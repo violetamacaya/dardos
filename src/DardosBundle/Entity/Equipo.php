@@ -3,6 +3,7 @@
 namespace DardosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Equipo
@@ -27,9 +28,16 @@ class Equipo
      * @ORM\Column(name="nombre", type="string", length=30, unique=true)
      */
     private $nombre;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="categoria", type="integer")
+     */
+    private $categoria;
 
     /**
-     * @ORM\OneToOne(targetEntity="Jugador", mappedBy="capitanea")
+     * @ORM\OneToOne(targetEntity="Jugador", inversedBy="capitanea")
+     * @ORM\JoinColumn(name="capitan_id", referencedColumnName="id")
      */
     private $capitan;
 
@@ -42,6 +50,12 @@ class Equipo
      * @ORM\OneToMany(targetEntity="Partida", mappedBy="equipo")
      */
     private $partidas;
+
+    public function __construct()
+    {
+         $this->jugadores = new ArrayCollection();
+         $this->partidas = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -121,5 +135,25 @@ class Equipo
     public function setPartidas($partidas)
     {
         $this->partidas = $partidas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    /**
+     * @param mixed $categoria
+     */
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
+    }
+    public function __toString()
+    {
+        return $this->nombre;
     }
 }

@@ -24,12 +24,13 @@ class JugadorController extends Controller
 
         $jugadors = $em->getRepository('DardosBundle:Jugador')->findAll();
 
-        return $this->render('jugador/index.html.twig', array(
+        return $this->render('@DardosBundle/Resources/views/jugador/index.html.twig', array(
             'jugadors' => $jugadors,
         ));
     }
 
-    /**
+
+/**
      * Creates a new Jugador entity.
      *
      */
@@ -47,10 +48,9 @@ class JugadorController extends Controller
             return $this->redirectToRoute('prueba_jugador_show', array('id' => $jugador->getId()));
         }
 
-        return $this->render('jugador/new.html.twig', array(
+        return $this->render('@DardosBundle/Resources/views/jugador/new.html.twig', array(
             'jugador' => $jugador,
             'form' => $form->createView(),
-            'patito' => "Miaaaaaauu",
         ));
     }
 
@@ -62,7 +62,7 @@ class JugadorController extends Controller
     {
         $deleteForm = $this->createDeleteForm($jugador);
 
-        return $this->render('jugador/show.html.twig', array(
+        return $this->render('@DardosBundle/Resources/views/jugador/show.html.twig', array(
             'jugador' => $jugador,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -86,7 +86,7 @@ class JugadorController extends Controller
             return $this->redirectToRoute('prueba_jugador_edit', array('id' => $jugador->getId()));
         }
 
-        return $this->render('jugador/edit.html.twig', array(
+        return $this->render('@DardosBundle/Resources/views/jugador/edit.html.twig', array(
             'jugador' => $jugador,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -1,0 +1,33 @@
+{% extends '@DardosBundle/Resources/views/layout.html.twig' %}
+
+{% block content %}
+    <h1>Listado de equipos</h1>
+
+    <table class="table-responsive table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Capitán</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipo in equipos %}
+            <tr>
+                <td><a href="{{ path('equipo_show', { 'id': equipo.id }) }}">{{ equipo.nombre }}</a></td>
+                <td>{{ equipo.capitan }}</td>
+                <td>{{ equipo.categoria }}</td>
+                <td>
+
+                            <a class="btn btn-primary" href="{{ path('equipo_show', { 'id': equipo.id }) }}">Mostrar</a>
+                            <a class="btn btn-info" href="{{ path('equipo_edit', { 'id': equipo.id }) }}">Editar</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            <a class="btn btn-success" href="{{ path('equipo_new') }}">Añadir equipo</a>
+
+{% endblock %}

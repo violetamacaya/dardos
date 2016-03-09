@@ -1,0 +1,39 @@
+{% extends '@DardosBundle/Resources/views/layout.html.twig' %}
+
+{% block content %}
+    <h1>Equipo</h1>
+    <div class="col-lg-6 col-sm-6">
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ equipo.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Categoría</th>
+                <td>{{ equipo.categoria }}</td>
+            </tr>
+            <tr>
+                <th>Jugadores</th>
+                <td>
+                    <ul>
+                        <li>{{ equipo.capitan }} <strong>(Capitan)</strong></li>
+                    {% for jugador in equipo.jugadores %}
+                        {% if jugador != equipo.capitan %}
+                        <li>{{ jugador }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+               </td>
+            </tr>
+        </tbody>
+    </table>
+
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Borrar">
+    <a class="btn btn-info" href="{{ path('equipo_index') }}">Volver al listado</a>
+
+    <a class="btn btn-primary" href="{{ path('equipo_edit', { 'id': equipo.id }) }}">Editar</a>
+            {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

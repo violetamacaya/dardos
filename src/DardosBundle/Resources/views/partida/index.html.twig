@@ -1,0 +1,43 @@
+{% extends '@DardosBundle/Resources/views/layout.html.twig' %}
+
+{% block content %}
+    <h1>Partidas</h1>
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Equipo</th>
+                <th>Contrincantes</th>
+                <th>Fecha</th>
+                <th>Jugada</th>
+                <th>Ganada</th>
+                <th>Tipo</th>
+                <th>Resultado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partida in partidas %}
+            <tr>
+                <td>{{ partida.equipo }}</td>
+                <td>{{ partida.contrincantes }}</td>
+                <td>{% if partida.fecha %}{{ partida.fecha|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if partida.jugada %}Sí{% else %}No{% endif %}</td>
+                <td>{% if partida.ganada %}Sí{% else %}No{% endif %}</td>
+                <td>{{ partida.tipo }}</td>
+                <td>{{ partida.resultado }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('partida_show', { 'id': partida.id }) }}">Mostrar</a>
+                    <a class="btn btn-info" href="{{ path('partida_edit', { 'id': partida.id }) }}">Editar</a>
+
+                    <a class="btn btn-danger" href="{{ path('partida_delete_get', {'id':partida.id }) }}" > Borrar</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+            <a class="btn btn-success" href="{{ path('partida_new') }}">Añadir partida</a>
+
+{% endblock %}

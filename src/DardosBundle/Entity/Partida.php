@@ -3,6 +3,7 @@
 namespace DardosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Partida
@@ -12,6 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Partida
 {
+    const TIPO_301 = "301";
+    const TIPO_CRICKET = "cricket";
+    const TIPO_COMBINADA = "combinada";
 
     /**
      * @var int
@@ -64,12 +68,44 @@ class Partida
     private $resultado;
 
     /**
+     * @ORM\OneToMany(targetEntity="Medias", mappedBy="partida", cascade={"persist"})
+     */
+    private $medias;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="aplazada", type="boolean")
+     */
+    private $aplazada;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="local", type="boolean")
+     */
+    private $local;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string" , length=15)
+     */
+    private $tipo;
+
+    /**
      * Partida constructor.
      */
     public function __construct()
     {
         $this->jugada = false;
         $this->ganada = false;
+        $this->local = true;
+        $this->aplazada = false;
+        $this->medias = new ArrayCollection(array());
+        $this->fecha = new \DateTime();
+        $this->fecha->setTime(21,30);
+        $this->resultado = "";
     }
 
     /**
@@ -89,7 +125,7 @@ class Partida
     }
 
     /**
-     * @return mixed
+     * @return Equipo
      */
     public function getEquipo()
     {
@@ -183,4 +219,75 @@ class Partida
     {
         $this->resultado = $resultado;
     }
+
+    /**
+     * @param \Doctrine\Common\Collection\ArrayCollection $medias
+     */
+    public function setMedias($medias)
+    {
+        $this->medias = $medias;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collection\ArrayCollection
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * @param boolean $aplazada
+     */
+    public function setAplazada($aplazada)
+    {
+        $this->aplazada = $aplazada;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getAplazada()
+    {
+        return $this->aplazada;
+    }
+
+    /**
+     * @param boolean $local
+     */
+    public function setLocal($local)
+    {
+        $this->local = $local;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getLocal()
+    {
+        return $this->local;
+    }
+
+    /**
+     * @param string $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    function __toString()
+    {
+        return $this->equipo->getNombre() . " vs " . $this->contrincantes;
+    }
+
+
 }
